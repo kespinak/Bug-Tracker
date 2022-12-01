@@ -1,4 +1,4 @@
-//  MAJOR PROBLEM - LINE 15... PROVIDER doesn't RENDER ANY CHILD COMPONENTS around 8min-10min mark
+//PROBLEM1: LINE 15... PROVIDER doesn't RENDER ANY CHILD COMPONENTS around 8min-10min mark
 
 import './index.css';
 import React from 'react';
