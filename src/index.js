@@ -1,3 +1,5 @@
+//  MAJOR PROBLEM - LINE 15... PROVIDER doesn't RENDER ANY CHILD COMPONENTS around 8min-10min mark
+
 import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -12,10 +14,10 @@ import { createStoreHook, Provider } from 'react-redux'; //7:30min SHOULD I DELE
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <App /> //WHY WONT THIS LOAD IF ITS WRAPPED IN PROVIDER???
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <App /> //WHY WONT THIS LOAD IF ITS WRAPPED IN PROVIDER???
+  // <Provider store={store}>
+  //   <App />
+  // </Provider>
 );
 
 // ReactDOM.render(

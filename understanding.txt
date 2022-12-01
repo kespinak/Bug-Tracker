@@ -9,7 +9,10 @@ localHost3000:
             )
         )
     )
-    
+
+PROBLEMS: 
+    components/TrelloCard.js
+    src/index.js
 
 //QUESTION1 - WHAT TELLS 'localHost3000' to output from './src/index.js' & './public/index.html' ?
     //ANSWER1 - 'localHost3000' only renders './public/index.html', which renders '<div id="root"></div>' in the body
