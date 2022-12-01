@@ -1,18 +1,35 @@
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-// import App from './App';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
+import store from './store';
+// import store from './store/store'; // SHOULD i DELETE THIS, I DID THIS INSTEAD OF THE PREVIOUS LINE
+import { createStoreHook, Provider } from 'react-redux'; //7:30min SHOULD I DELETE THIS? NOT SURE IF ITS READING IT...
+// import { Provider } from 'react'; // SHOULD i DELETE THIS, I DID THIS INSTEAD OF THE PREVIOUS LINE
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <App /> //WHY WONT THIS LOAD IF ITS WRAPPED IN PROVIDER???
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <App />
+//   </Provider>,
+//   document.getElementById('root')
+// );
+
+// This was from ./index.js...ILL JUST USE THIS AS A REFERENCE...
+  // ReactDOM.render(
+  //   <App />, document.getElementById('root') 
+  // );
 reportWebVitals();
+  // If you want to start measuring performance in your app, pass a function
+  // to log results (for example: reportWebVitals(console.log))
+  // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

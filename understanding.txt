@@ -1,0 +1,16 @@
+localHost3000:
+
+    ./public/index.html = RENDER(
+        //<body> renders its own body texts.
+        //<body> renders '<div id="root"></div>'(
+            ./src/index.js renders to the 'root' and renders the following = RENDER(
+                ./src/components/App.js 
+                TrelloList.js
+            )
+        )
+    )
+    
+
+//QUESTION1 - WHAT TELLS 'localHost3000' to output from './src/index.js' & './public/index.html' ?
+    //ANSWER1 - 'localHost3000' only renders './public/index.html', which renders '<div id="root"></div>' in the body
+    Then './src/index.js' inserts itself into the '<div id="root"></div>'...
