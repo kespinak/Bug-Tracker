@@ -6,7 +6,7 @@ const store = configureStore({ reducer: rootReducer });
 
 export default store;
 
-// HERE IS THE ORIGINAL CODE FROM THE TUTORIAL:
+// HERE IS THE ORIGINAL CODE:
 // import { configureStore } from '@reduxjs/toolkit';
 // import rootReducer from '../reducers';
 // import { combineReducers } from 'redux';

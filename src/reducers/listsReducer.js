@@ -1,7 +1,7 @@
 const initialState = [
     {
-        title: 'Todo',
         id: 0,
+        title: 'Todo',
         cards: [
             {
                 id: 0,
@@ -10,6 +10,24 @@ const initialState = [
             {
                 id: 1,
                 text: 'we used a mix between material UI, React, and Styled components'
+            }
+        ]
+    },
+    {
+        title: 'In Progress',
+        id: 1,
+        cards: [
+            {
+                id: 0,
+                text: 'we will create our first reducer'
+            },
+            {
+                id: 1,
+                text: 'and render many cards on our list with static data'
+            },
+            {
+                id: 2,
+                text: 'we will also create our first action creator'
             }
         ]
     }
