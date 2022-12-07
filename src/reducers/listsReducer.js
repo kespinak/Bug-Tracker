@@ -1,7 +1,7 @@
 const initialState = [
     {
-        id: 0,
         title: 'Todo',
+        id: 0,
         cards: [
             {
                 id: 0,
@@ -12,9 +12,8 @@ const initialState = [
                 text: 'we used a mix between material UI, React, and Styled components'
             }
         ]
-
     }
-]
+];
 
 const listsReducer = (state = initialState, action) => {
     switch(action.type) {

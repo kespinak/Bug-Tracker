@@ -7,7 +7,7 @@ const TrelloList = ({title}) => {
         <div style={StyleSheet.container}>
             <h4>{title}</h4>
             <TrelloCard />
-            <TrelloCard2 />
+            {/* <TrelloCard2 /> */}
         </div>
     )
 };
