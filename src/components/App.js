@@ -9,6 +9,13 @@ import TrelloList from './TrelloList';
 import TrelloActionButton from './TrelloActionButton';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { sort } from '../actions';
+import styled from 'styled-components';
+
+const ListContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 class App extends Component {
 
   // todo: reordering logic
@@ -41,11 +48,12 @@ class App extends Component {
   render() {
     const { lists } = this.props; //THIS MIGHT HAVE TO MOVE ABOVE RETURN()...
     return (
-        <DragDropContext onDragEnd={this.onDragEnd}>
-        <div className='App'>
+      <DragDropContext onDragEnd={this.onDragEnd}>
+        {/* <div className='App'>  */}
+        <div>
           <h2>Hello from bug-tracker\src\App.js in 1st line aka h2-brackets</h2>
           {/* <TrelloList title='hello from components/app.js ->outputting: TrelloList'/> */}
-          <div style={styles.listsContainer}>
+          <ListContainer> 
             { lists.map(list => (
               <TrelloList 
                 listID={list.id}
@@ -53,12 +61,12 @@ class App extends Component {
                 title={list.title} 
                 cards={list.cards} 
               />
-              ))}
-              <TrelloActionButton list />
-          </div>
+            ))}
+            <TrelloActionButton list />
+          </ListContainer>
           <h3>Hello from bug-tracker\src\App.js in 2nd line aka p-brackets</h3>
         </div>
-        </DragDropContext>
+      </DragDropContext>
     )
   }
 }
