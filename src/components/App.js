@@ -44,8 +44,8 @@ class App extends Component {
 
 // // * MINOR PROBLEM 1.2
 const mapStateToProps = state => ({
-  lists: state.lists
-})
+  lists: state.lists // lists: state."lists" this comes from "lists": listsReducer in reducers index.js
+});
 
 export default connect(mapStateToProps)(App); // * BIG PROBLEM 1.3 =  
 // export default connect(mapStateToProps);
