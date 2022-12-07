@@ -1,9 +1,13 @@
+// * LOOK FOR GREEN MARKERS FOR ERRORS
+
 import React from 'react';
 import Icon from '@mui/material/Icon';
 import TextareaAutosize from 'react-textarea-autosize';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 
+import { connect } from 'react-redux';
+import { addList, addCard } from '../actions';
 
 
 class TrelloActionButton extends React.Component {
@@ -29,6 +33,32 @@ class TrelloActionButton extends React.Component {
         this.setState({
             text: event.target.value,
         });
+    };
+
+    handleAddList = () => {
+        const { dispatch } = this.props;
+        const { text } = this.state;
+
+        if(text) {
+            this.setState({ 
+                text: ''
+            });
+            dispatch(addList(text));
+        }
+
+        return;
+    };
+
+    handleAddCard = () => {
+        const { dispatch, listID } = this.props;
+        const { text } = this.state;
+
+        if(text) {
+            this.setState({ 
+                text: ''
+            });
+            dispatch(addCard(listID, text));
+        }
     };
 
     renderForm = () => {
@@ -69,6 +99,7 @@ class TrelloActionButton extends React.Component {
                 </Card>
                 <div style={styles.formButtonGroup}>
                     <Button 
+                        onMouseDown={list ? this.handleAddList : this.handleAddCard} //TRICKY IF ITS ONLICK THEN ONBLUR FIRES FIRST AND THIS WONT WORK...SO USE ONMOUSEDOWN
                         variant='contained' 
                         style={{color: 'while', backgroundColor: '#5aac44'}}
                     >
@@ -132,4 +163,5 @@ const styles = {
     }
 }
 
-export default TrelloActionButton;
+// export default TrelloActionButton;
+export default connect()(TrelloActionButton);
