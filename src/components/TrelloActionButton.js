@@ -45,11 +45,9 @@ class TrelloActionButton extends React.Component {
                 <Card 
                     style={
                         {
-                            resize: 'none',
-                            width: '100%',
-                            overflow: 'hidden',
-                            outline: 'none',
-                            border: 'none',
+                            minHeight: 85,
+                            minWidth: 272,
+                            padding: '6px 8px 2px',
                         }
                     }>
                     <TextareaAutosize 
@@ -62,6 +60,7 @@ class TrelloActionButton extends React.Component {
                             {
                                 resize: 'none',
                                 width: '100%',
+                                overflow: 'hidden',
                                 outline: 'none',
                                 border: 'none',
                             }
@@ -96,7 +95,7 @@ class TrelloActionButton extends React.Component {
         return (
             <div 
                 onClick={this.openForm}
-                styles={{
+                style={{
                     ...styles.openForButtonGroup,
                     opacity: buttonTextOpacity, 
                     color: buttonTextColor, 
