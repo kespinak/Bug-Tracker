@@ -1,17 +1,41 @@
 
 import './App.css';
 import React, { Component } from 'react'; //THIS ISN'T BEING USED (SEE 'class App extends Component {...')
-import TrelloList from './TrelloList';
-import TrelloActionButton from './TrelloActionButton';
-import { DragDropContext } from 'react-beautiful-dnd';
 
 import { connect } from 'react-redux';
 import { render } from 'react-dom';
 
+import TrelloList from './TrelloList';
+import TrelloActionButton from './TrelloActionButton';
+import { DragDropContext } from 'react-beautiful-dnd';
+import { sort } from '../actions';
 class App extends Component {
 
-  onDragEnd = () => {
-    // todo: reorder our lists
+  // todo: reordering logic
+  onDragEnd = (result) => {
+    const { destination, source, draggableId, type } = result;
+
+    if(!destination) {
+      return;
+    }
+
+    this.props.dispatch(
+      sort(
+        source.droppableId,
+        destination.droppableId,
+        source.index,
+        destination.index,
+        draggableId,
+        type
+      )
+    );
+
+    // const lists = this.state.lists;
+    // const draggedList = lists[source.droppableId];
+    // draggedList.cards.splice(source.index, 1);
+    // lists[destination.droppableId].cards.splice(destination.index, 0, draggedList.cards[source.index]);
+    // this.setState({ lists });
+
   };
 
   render() {

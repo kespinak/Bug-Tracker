@@ -52,6 +52,7 @@ const listsReducer = (state = initialState, action) => {
             listID += 1;
             return [...state, newList];
         }
+
         case CONSTANTS.ADD_CARD: {
             const newCard = {
                 id: `card-${listID}`, // * SHOULD USE WHAT COPILATE IS SUGGESTING? "id: action.payload.cardID" AT 15:35 p4
@@ -71,6 +72,27 @@ const listsReducer = (state = initialState, action) => {
             });
             return newState;
         }
+
+        case CONSTANTS.DRAG_HAPPENED: {
+            const {
+                droppableIdStart,
+                droppableIdEnd,
+                droppableIndexStart,
+                droppableIndexEnd,
+                draggableId,
+                type,
+            } = action.payload;
+            const newState = [...state];
+
+            // in the same list
+            if(droppableIdStart === droppableIdEnd) {
+                const list = state.find(list => droppableIdStart === list.id);
+                const card = list.cards.splice(droppableIndexStart, 1);
+                list.cards.splice(droppableIndexEnd, 0, ...card);
+            }
+            return newState;
+        }
+
         default:
             return state;
     }
