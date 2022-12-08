@@ -10,6 +10,7 @@ import TrelloActionButton from './TrelloActionButton';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { sort } from '../actions';
 import styled from 'styled-components';
+import { Droppable } from 'react-beautiful-dnd';
 
 const ListContainer = styled.div`
   display: flex;
@@ -53,28 +54,30 @@ class App extends Component {
         <div>
           <h2>Hello from bug-tracker\src\App.js in 1st line aka h2-brackets</h2>
           {/* <TrelloList title='hello from components/app.js ->outputting: TrelloList'/> */}
-          <ListContainer> 
-            { lists.map(list => (
-              <TrelloList 
-                listID={list.id}
-                key={list.id} 
-                title={list.title} 
-                cards={list.cards} 
-              />
-            ))}
-            <TrelloActionButton list />
-          </ListContainer>
+          <Droppable droppableId='all-lists' direction='horizontal' type='list'>
+            {provided => (
+              <ListContainer 
+                {...provided.droppableProps} 
+                ref={provided.innerRef}
+              > 
+                { lists.map((list, index) => (
+                  <TrelloList 
+                    listID={list.id}
+                    key={list.id} 
+                    title={list.title} 
+                    cards={list.cards} 
+                    index={index}
+                  />
+                ))}
+                {provided.placeholder}
+                <TrelloActionButton list />
+              </ListContainer>
+            )}
+          </Droppable>
           <h3>Hello from bug-tracker\src\App.js in 2nd line aka p-brackets</h3>
         </div>
       </DragDropContext>
     )
-  }
-}
-
-const styles = {
-  listsContainer: {
-    display: 'flex', 
-    flexdirection: 'row',
   }
 }
 
