@@ -4,12 +4,25 @@ import TrelloCard from "./TrelloCard";
 import TrelloCard2 from "./TrelloCard2"; // INTERESTING...TRY CHANGING './TrelloCard2' to '/.TrelloCard' ...for some reason it swaps...
 import TrelloActionButton from './TrelloActionButton';
 import { Droppable } from 'react-beautiful-dnd';
+import styled from 'styled-components';
+
+const ListContainer = styled.div`
+    background-color: #ccc;
+    border-radius: 3px;
+    width: 300px;
+    padding: 8px;
+    height: 100%;
+    margin-right: 8px;
+`;
 
 const TrelloList = ({title, cards, listID }) => {
     return(
         <Droppable droppableId={String(listID)}> 
         {provided => (
-            <div {...provided.droppableProps} ref={provided.innerRef} style={StyleSheet.container}>
+            <ListContainer 
+                {...provided.droppableProps} 
+                ref={provided.innerRef}
+            >
                 <h4>{title}</h4>
                 { cards.map((card, index) => (
                     <TrelloCard 
@@ -23,21 +36,10 @@ const TrelloList = ({title, cards, listID }) => {
                 {provided.placeholder}
                 {/* <TrelloCard /> */}
                 {/* <TrelloCard2 /> */}
-            </div>
+            </ListContainer>
         )}
         </Droppable>
     )
-};
-
-const StyleSheet = {
-    container: {
-        backgroundColor: '#ccc',
-        borderRadius: 3,
-        width: 300,
-        padding: 8,
-        height: '100%',
-        marginRight: 8,
-    }
 };
 
 export default TrelloList;
