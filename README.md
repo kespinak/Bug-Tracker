@@ -1,5 +1,6 @@
-# Bug-Tracker
-Bug/Issue/Ticket Tracker
+# Bug/Issue/Ticket-Tracker
+
+Run: npm start
 
 What I want:
     User Accounts
